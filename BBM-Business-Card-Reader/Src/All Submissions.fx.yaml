@@ -1,0 +1,843 @@
+"'All Submissions' As screen":
+    OnVisible: =
+
+    "Gallery1_3 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        Height: =1250
+        Items: ='Business Card'
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =Set(editForm,true);
+        TemplateFill: |-
+            =//If(ThisItem.IsSelected,ColorFade(RGBA(168,16,16,100),30%),RGBA(0, 0, 0, 0))
+            Color.LightGray
+        TemplatePadding: =0
+        TemplateSize: =116
+        Width: =720
+        X: =24
+        Y: =83
+        ZIndex: =1
+
+        Title1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 86
+            X: =16
+            Y: =(Parent.TemplateHeight - (Self.Size*1.8 + Subtitle1.Size*1.8 + 2 + Body1.Size*1.8)) / 2
+            ZIndex: =1
+
+        Subtitle1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Email
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title1.Width
+            X: =Title1.X
+            Y: =Title1.Y + Title1.Height
+            ZIndex: =2
+
+        Body1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Name
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title1.Width
+            X: =Title1.X
+            Y: =Subtitle1.Y + Subtitle1.Height
+            ZIndex: =3
+
+        NextArrow1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(166, 166, 166, 1)
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Tooltip: ="View item details"
+            Width: =50
+            X: =Parent.TemplateWidth - Self.Width - 12
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator1 As rectangle:
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =5
+
+        Rectangle1 As rectangle:
+            Height: =Parent.TemplateHeight - Separator1.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =6
+
+    Header1_4 As Header:
+        BasePaletteColor: =
+        DisplayMode: =DisplayMode.Edit
+        FontColor: =
+        Height: =50
+        IsLogoVisible: =false
+        IsProfilePictureVisible: =false
+        OnSelectLogo: =false
+        Style: ='Header.Style'.Primary
+        Title: ="Customers"
+        UserEmail: =User().Email
+        UserImage: =User().Image
+        UserName: =User().FullName
+        Width: =Parent.Width
+        X: =0
+        Y: =0
+        ZIndex: =3
+
+    Container6_3 As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(0, 0, 0, 0.2)
+        Height: =1316
+        Visible: =editForm
+        Width: =768
+        Y: =50
+        ZIndex: =4
+
+        Container7_3 As groupContainer.manualLayoutContainer:
+            Fill: =RGBA(255, 255, 255, 255)
+            Height: =1084
+            Width: =706
+            X: =27
+            Y: =99
+            ZIndex: =2
+
+            Form1_3 As form:
+                AcceptsFocus: =true
+                DataSource: ='Business Card'
+                DefaultMode: =FormMode.New
+                Height: =865
+                Item: =//Gallery1_1.Selected
+                NumberOfColumns: =1
+                Width: =706
+                Y: =97
+                ZIndex: =1
+
+                "'Customer Card_DataCard3' As typedDataCard.largeImageViewCard":
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="Companylogo"
+                    Default: =ThisItem.'Customer Card'
+                    DisplayMode: =DisplayMode.View
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"Companylogo")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    Required: =false
+                    Width: =706
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                    DataCardKey21 As label:
+                        AutoHeight: =true
+                        Height: =0
+                        Text: =Parent.DisplayName
+                        Visible: =false
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue4 As image:
+                        DisplayMode: =Parent.DisplayMode
+                        Height: =200
+                        Image: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,'Customer Card')
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey21.Y + DataCardKey21.Height + 5
+                        ZIndex: =2
+
+                Title_DataCard1_3 As typedDataCard.textualEditCard:
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="Title"
+                    Default: =ThisItem.Title
+                    DisplayMode: =Parent.DisplayMode
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"Title")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    MaxLength: =DataSourceInfo([@'Business Card'], DataSourceInfo.MaxLength, "Title")
+                    Required: =false
+                    Update: =DataCardValue1_3.Text
+                    Width: =706
+                    X: =0
+                    Y: =1
+                    ZIndex: =2
+
+                    DataCardKey1_3 As label:
+                        AutoHeight: =true
+                        Color: =RGBA(0, 0, 0, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Text: ="Company Name"//Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue1_3 As text:
+                        BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                        Default: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,Title)
+                        DelayOutput: =true
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =DisplayMode.Disabled
+                        Height: =50
+                        MaxLength: =Parent.MaxLength
+                        PaddingLeft: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Tooltip: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey1_3.Y + DataCardKey1_3.Height + 5
+                        ZIndex: =2
+
+                    ErrorMessage1_3 As label:
+                        AutoHeight: =true
+                        Height: =10
+                        Live: =Live.Assertive
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =Parent.Error
+                        Visible: =Parent.DisplayMode=DisplayMode.Edit
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardValue1_3.Y + DataCardValue1_3.Height
+                        ZIndex: =3
+
+                    StarVisible1_3 As label:
+                        Align: =Align.Center
+                        Height: =DataCardKey1_3.Height
+                        Text: ="*"
+                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                        Width: =30
+                        Wrap: =false
+                        Y: =DataCardKey1_3.Y
+                        ZIndex: =4
+
+                Email_DataCard1_3 As typedDataCard.textualEditCard:
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="Email"
+                    Default: =ThisItem.Email
+                    DisplayMode: =Parent.DisplayMode
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"Email")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    MaxLength: =DataSourceInfo([@'Business Card'], DataSourceInfo.MaxLength, "Email")
+                    Required: =false
+                    Update: =DataCardValue2_3.Text
+                    Width: =706
+                    X: =0
+                    Y: =2
+                    ZIndex: =2
+
+                    DataCardKey2_3 As label:
+                        AutoHeight: =true
+                        Color: =RGBA(0, 0, 0, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Text: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue2_3 As text:
+                        BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                        Default: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,Email)
+                        DelayOutput: =true
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =DisplayMode.Disabled
+                        Height: =50
+                        MaxLength: =Parent.MaxLength
+                        PaddingLeft: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Tooltip: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey2_3.Y + DataCardKey2_3.Height + 5
+                        ZIndex: =2
+
+                    ErrorMessage2_3 As label:
+                        AutoHeight: =true
+                        Height: =10
+                        Live: =Live.Assertive
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =Parent.Error
+                        Visible: =Parent.DisplayMode=DisplayMode.Edit
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardValue2_3.Y + DataCardValue2_3.Height
+                        ZIndex: =3
+
+                    StarVisible2_3 As label:
+                        Align: =Align.Center
+                        Height: =DataCardKey2_3.Height
+                        Text: ="*"
+                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                        Width: =30
+                        Wrap: =false
+                        Y: =DataCardKey2_3.Y
+                        ZIndex: =4
+
+                Name_DataCard1_3 As typedDataCard.textualEditCard:
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="Name"
+                    Default: =ThisItem.Name
+                    DisplayMode: =Parent.DisplayMode
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"Name")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    MaxLength: =DataSourceInfo([@'Business Card'], DataSourceInfo.MaxLength, "Name")
+                    Required: =false
+                    Update: =DataCardValue10_3.Text
+                    Width: =706
+                    X: =0
+                    Y: =3
+                    ZIndex: =2
+
+                    DataCardKey10_3 As label:
+                        AutoHeight: =true
+                        Color: =RGBA(0, 0, 0, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Text: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue10_3 As text:
+                        BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                        Default: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,Name)
+                        DelayOutput: =true
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =DisplayMode.Disabled
+                        Height: =50
+                        MaxLength: =Parent.MaxLength
+                        PaddingLeft: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Tooltip: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey10_3.Y + DataCardKey10_3.Height + 5
+                        ZIndex: =2
+
+                    ErrorMessage14_3 As label:
+                        AutoHeight: =true
+                        Height: =10
+                        Live: =Live.Assertive
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =Parent.Error
+                        Visible: =Parent.DisplayMode=DisplayMode.Edit
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardValue10_3.Y + DataCardValue10_3.Height
+                        ZIndex: =3
+
+                    StarVisible14_3 As label:
+                        Align: =Align.Center
+                        Height: =DataCardKey10_3.Height
+                        Text: ="*"
+                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                        Width: =30
+                        Wrap: =false
+                        Y: =DataCardKey10_3.Y
+                        ZIndex: =4
+
+                "'Phone Number_DataCard1_3' As typedDataCard.textualEditCard":
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="PhoneNumber"
+                    Default: =ThisItem.'Phone Number'
+                    DisplayMode: =Parent.DisplayMode
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"PhoneNumber")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    MaxLength: =DataSourceInfo([@'Business Card'], DataSourceInfo.MaxLength, "PhoneNumber")
+                    Required: =false
+                    Update: =DataCardValue15_3.Text
+                    Visible: |
+                        =If(IsBlank(LookUp('Business Card', ID = Gallery1_3.Selected.ID, 'Phone Number')), 
+                            false, 
+                            true
+                        )
+                    Width: =706
+                    X: =0
+                    Y: =4
+                    ZIndex: =2
+
+                    DataCardKey15_3 As label:
+                        AutoHeight: =true
+                        Color: =RGBA(0, 0, 0, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Text: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue15_3 As text:
+                        BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                        Default: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,'Phone Number')
+                        DelayOutput: =true
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =DisplayMode.Disabled
+                        Height: =50
+                        MaxLength: =Parent.MaxLength
+                        PaddingLeft: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Tooltip: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey15_3.Y + DataCardKey15_3.Height + 5
+                        ZIndex: =2
+
+                    ErrorMessage15_3 As label:
+                        AutoHeight: =true
+                        Height: =10
+                        Live: =Live.Assertive
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =Parent.Error
+                        Visible: =Parent.DisplayMode=DisplayMode.Edit
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardValue15_3.Y + DataCardValue15_3.Height
+                        ZIndex: =3
+
+                    StarVisible15_3 As label:
+                        Align: =Align.Center
+                        Height: =DataCardKey15_3.Height
+                        Text: ="*"
+                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                        Width: =30
+                        Wrap: =false
+                        Y: =DataCardKey15_3.Y
+                        ZIndex: =4
+
+                Website_DataCard2_3 As typedDataCard.textualEditCard:
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="Website"
+                    Default: =ThisItem.Website
+                    DisplayMode: =Parent.DisplayMode
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"Website")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    MaxLength: =DataSourceInfo([@'Business Card'], DataSourceInfo.MaxLength, "Website")
+                    Required: =false
+                    Update: =DataCardValue16_3.Text
+                    Width: =706
+                    X: =0
+                    Y: =5
+                    ZIndex: =2
+
+                    DataCardKey16_3 As label:
+                        AutoHeight: =true
+                        Color: =RGBA(0, 0, 0, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Text: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue16_3 As text:
+                        BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                        Default: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,Website)
+                        DelayOutput: =true
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =DisplayMode.Disabled
+                        Height: =50
+                        MaxLength: =Parent.MaxLength
+                        PaddingLeft: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Tooltip: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey16_3.Y + DataCardKey16_3.Height + 5
+                        ZIndex: =2
+
+                    ErrorMessage16_3 As label:
+                        AutoHeight: =true
+                        Height: =10
+                        Live: =Live.Assertive
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =Parent.Error
+                        Visible: =Parent.DisplayMode=DisplayMode.Edit
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardValue16_3.Y + DataCardValue16_3.Height
+                        ZIndex: =3
+
+                    StarVisible16_3 As label:
+                        Align: =Align.Center
+                        Height: =DataCardKey16_3.Height
+                        Text: ="*"
+                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                        Width: =30
+                        Wrap: =false
+                        Y: =DataCardKey16_3.Y
+                        ZIndex: =4
+
+                Address_DataCard1_3 As typedDataCard.textualEditCard:
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="Address"
+                    Default: =ThisItem.Address
+                    DisplayMode: =Parent.DisplayMode
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"Address")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    MaxLength: =DataSourceInfo([@'Business Card'], DataSourceInfo.MaxLength, "Address")
+                    Required: =false
+                    Update: =DataCardValue17_3.Text
+                    Width: =706
+                    X: =0
+                    Y: =6
+                    ZIndex: =2
+
+                    DataCardKey17_3 As label:
+                        AutoHeight: =true
+                        Color: =RGBA(0, 0, 0, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Text: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue17_3 As text:
+                        BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                        Default: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,Address)
+                        DelayOutput: =true
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =DisplayMode.Disabled
+                        Height: =50
+                        MaxLength: =Parent.MaxLength
+                        PaddingLeft: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Tooltip: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey17_3.Y + DataCardKey17_3.Height + 5
+                        ZIndex: =2
+
+                    ErrorMessage17_3 As label:
+                        AutoHeight: =true
+                        Height: =10
+                        Live: =Live.Assertive
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =Parent.Error
+                        Visible: =Parent.DisplayMode=DisplayMode.Edit
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardValue17_3.Y + DataCardValue17_3.Height
+                        ZIndex: =3
+
+                    StarVisible17_3 As label:
+                        Align: =Align.Center
+                        Height: =DataCardKey17_3.Height
+                        Text: ="*"
+                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                        Width: =30
+                        Wrap: =false
+                        Y: =DataCardKey17_3.Y
+                        ZIndex: =4
+
+                "'Fax No_DataCard2_3' As typedDataCard.textualEditCard":
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="FaxNo"
+                    Default: =ThisItem.'Fax No'
+                    DisplayMode: =Parent.DisplayMode
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"FaxNo")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    MaxLength: =DataSourceInfo([@'Business Card'], DataSourceInfo.MaxLength, "FaxNo")
+                    Required: =false
+                    Update: =DataCardValue20_3.Text
+                    Visible: |
+                        =If(IsBlank(LookUp('Business Card', ID = Gallery1_3.Selected.ID, 'Fax No')), 
+                            false, 
+                            true
+                        )
+                    Width: =706
+                    X: =0
+                    Y: =7
+                    ZIndex: =2
+
+                    DataCardKey20_3 As label:
+                        AutoHeight: =true
+                        Color: =RGBA(0, 0, 0, 1)
+                        Height: =50
+                        Text: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue20_3 As text:
+                        BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                        Default: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,'Fax No')
+                        DelayOutput: =true
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =DisplayMode.Disabled
+                        Height: =50
+                        HoverBorderColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =RGBA(255, 255, 255, 1)
+                        MaxLength: =Parent.MaxLength
+                        PaddingLeft: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Tooltip: =Parent.DisplayName
+                        Visible: |
+                            =true
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey20_3.Y + DataCardKey20_3.Height + 5
+                        ZIndex: =2
+
+                    ErrorMessage20_3 As label:
+                        AutoHeight: =true
+                        Height: =10
+                        Live: =Live.Assertive
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =Parent.Error
+                        Visible: =Parent.DisplayMode=DisplayMode.Edit
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardValue20_3.Y + DataCardValue20_3.Height
+                        ZIndex: =3
+
+                    StarVisible20_3 As label:
+                        Align: =Align.Center
+                        Height: =DataCardKey20_3.Height
+                        Text: ="*"
+                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                        Width: =30
+                        Wrap: =false
+                        Y: =DataCardKey20_3.Y
+                        ZIndex: =4
+
+                Designation_DataCard2_3 As typedDataCard.textualEditCard:
+                    BorderStyle: =BorderStyle.Solid
+                    DataField: ="Designation"
+                    Default: =ThisItem.Designation
+                    DisplayMode: =Parent.DisplayMode
+                    DisplayName: =DataSourceInfo([@'Business Card'],DataSourceInfo.DisplayName,"Designation")
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    MaxLength: =DataSourceInfo([@'Business Card'], DataSourceInfo.MaxLength, "Designation")
+                    Required: =false
+                    Update: =DataCardValue22_3.Text
+                    Visible: |
+                        =If(IsBlank(LookUp('Business Card', ID = Gallery1_3.Selected.ID, Designation)), 
+                            false, 
+                            true
+                        )
+                    Width: =706
+                    X: =0
+                    Y: =8
+                    ZIndex: =2
+
+                    DataCardKey22_3 As label:
+                        AutoHeight: =true
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Text: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        Wrap: =false
+                        X: =30
+                        Y: =10
+                        ZIndex: =1
+
+                    DataCardValue22_3 As text:
+                        BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                        Default: =LookUp('Business Card',ID = Gallery1_3.Selected.ID ,Designation)
+                        DelayOutput: =true
+                        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                        DisabledColor: =RGBA(0, 0, 0, 1)
+                        DisabledFill: =RGBA(255, 255, 255, 1)
+                        DisplayMode: =DisplayMode.Disabled
+                        Height: =50
+                        MaxLength: =Parent.MaxLength
+                        PaddingLeft: =5
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Tooltip: =Parent.DisplayName
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardKey22_3.Y + DataCardKey22_3.Height + 5
+                        ZIndex: =2
+
+                    ErrorMessage22_3 As label:
+                        AutoHeight: =true
+                        Height: =10
+                        Live: =Live.Assertive
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =Parent.Error
+                        Visible: =Parent.DisplayMode=DisplayMode.Edit
+                        Width: =Parent.Width - 60
+                        X: =30
+                        Y: =DataCardValue22_3.Y + DataCardValue22_3.Height
+                        ZIndex: =3
+
+                    StarVisible22_3 As label:
+                        Align: =Align.Center
+                        Height: =DataCardKey22_3.Height
+                        Text: ="*"
+                        Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                        Width: =30
+                        Wrap: =false
+                        Y: =DataCardKey22_3.Y
+                        ZIndex: =4
+
+            Button4_3 As button:
+                OnSelect: |-
+                    =SubmitForm(Form1_3);Set(editForm,false);
+                    Refresh('Business Card');
+                Text: ="Update"
+                Visible: =false
+                Width: =148
+                X: =455
+                Y: =988
+                ZIndex: =3
+
+            Icon1_3 As icon.Cancel:
+                Color: =RGBA(0, 0, 0, 1)
+                Height: =48
+                Icon: =Icon.Cancel
+                OnSelect: =Set(editForm,false);
+                Width: =48
+                X: =631
+                Y: =18
+                ZIndex: =4
+
+            Label1_3 As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Semibold
+                Size: =20
+                Text: ="Customer"
+                X: =278
+                Y: =20
+                ZIndex: =5
+
+            Button7_3 As button:
+                OnSelect: |-
+                    =//UpdateContext({selectedItem: Gallery1.Selected});
+                    
+                    //SubmitForm(Form1);
+                    Patch(
+                        'Business Card',
+                        Gallery1_3.Selected,
+                       // Defaults('Business Card'),
+                        {
+                          Active:false  
+                        }
+                    );
+                    Set(editForm,false);
+                Text: ="Delete"
+                Visible: =false
+                X: =51
+                Y: =988
+                ZIndex: =6
+
+    Icon2_3 As icon.Home:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =37
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Landing page',ScreenTransition.Fade)
+        Width: =39
+        X: =715
+        Y: =8
+        ZIndex: =5
+

@@ -1,0 +1,11 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_crdb2_businesscard_forms",
+      "Namespace": "Business Cards (Forms)",
+      "Values": {
+        "Information": "65138b05-aacc-4ef5-8489-6f62da7f7f26"
+      }
+    }
+  ]
+}

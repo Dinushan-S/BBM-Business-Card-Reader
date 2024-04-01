@@ -1,0 +1,13 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: =Set(editForm,false);
+    StartScreen: ='Landing page'
+    Theme: =RedTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+
