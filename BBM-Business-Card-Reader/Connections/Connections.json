@@ -1,0 +1,162 @@
+{
+  "5f0ed4ce-2857-452f-9c6f-6c2f44c1e4eb": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1682/1.0.1682.3675/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://sigiriya.sharepoint.com/teams/playground": {
+        "dataSources": {
+          "Business Card": {
+            "tableName": "9b0842d5-198e-4c17-ae25-5a509c9dfc1b"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Business Card"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "5f0ed4ce-2857-452f-9c6f-6c2f44c1e4eb"
+  },
+  "8db4cf3c-3c32-4a96-b133-6f11afad14d3": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1680/1.0.1680.3652/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "a18653e6-e63a-48f2-b0a4-fa79feee9fe5": {
+          "value": "shared_sharepointonline"
+        },
+        "e89af603-8095-48a7-ad1a-181bd5e69c2f": {
+          "value": "shared_office365"
+        },
+        "workflowDisplayName": {
+          "value": "Add an item to SharePoint and send an email"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "652d3586-4a59-4c49-944e-996a7ac5d9db"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_office365": {
+          "value": "e89af603-8095-48a7-ad1a-181bd5e69c2f"
+        },
+        "shared_sharepointonline": {
+          "value": "a18653e6-e63a-48f2-b0a4-fa79feee9fe5"
+        },
+        "workflowDisplayName": {
+          "value": "Add an item to SharePoint and send an email"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "652d3586-4a59-4c49-944e-996a7ac5d9db"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "AddanitemtoSharePointandsendanemail"
+    ],
+    "dependencies": {
+      "shared_office365": "e89af603-8095-48a7-ad1a-181bd5e69c2f",
+      "shared_sharepointonline": "a18653e6-e63a-48f2-b0a4-fa79feee9fe5"
+    },
+    "dependents": [],
+    "id": "8db4cf3c-3c32-4a96-b133-6f11afad14d3"
+  },
+  "a18653e6-e63a-48f2-b0a4-fa79feee9fe5": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1682/1.0.1682.3675/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "8db4cf3c-3c32-4a96-b133-6f11afad14d3"
+    ],
+    "id": "a18653e6-e63a-48f2-b0a4-fa79feee9fe5"
+  },
+  "b363c67c-4755-459c-9f5e-c4ab20b3720c": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1682/1.0.1682.3675/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://sigiriya.sharepoint.com/teams/playground": {
+        "dataSources": {
+          "Task": {
+            "tableName": "f432f68c-0311-47c6-8136-feaf3dd31453"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Task"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "b363c67c-4755-459c-9f5e-c4ab20b3720c"
+  },
+  "cbf3bea0-bafd-48d8-a1c3-51f0f397b798": {
+    "appActions": [
+      "SearchUserV2"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1677/1.0.1677.3637/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "cbf3bea0-bafd-48d8-a1c3-51f0f397b798"
+  },
+  "e89af603-8095-48a7-ad1a-181bd5e69c2f": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1677/1.0.1677.3637/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "8db4cf3c-3c32-4a96-b133-6f11afad14d3"
+    ],
+    "id": "e89af603-8095-48a7-ad1a-181bd5e69c2f"
+  }
+}
