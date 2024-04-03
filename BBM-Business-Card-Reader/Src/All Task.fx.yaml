@@ -1,4 +1,4 @@
-"'My Task_1' As screen":
+"'All Task' As screen":
     OnVisible: =
 
     "Gallery1_2 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
@@ -107,7 +107,7 @@
         IsProfilePictureVisible: =false
         OnSelectLogo: =false
         Style: ='Header.Style'.Primary
-        Title: ="My Tasks"
+        Title: ="All Tasks"
         UserEmail: =User().Email
         UserImage: =User().Image
         UserName: =User().FullName
